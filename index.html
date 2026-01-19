@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="Logo.jpeg">
+<title>Sinikithemba Organization</title>
+
+<style>
+/* -----------------------
+   ROOT + THEME
+------------------------*/
+:root {
+  --bg: #f4efe6;
+  --text: #111;
+  --paper: #ffffff;
+  --border: #c7c0b5;
+  --accent: #111;
+}
+
+body.night {
+  --bg: #0f1115;
+  --text: #e6e6e6;
+  --paper: #161a20;
+  --border: #2a2f3a;
+  --accent: #3a85ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Michroma", system-ui, sans-serif;
+  line-height: 1.75;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* -----------------------
+   HEADER / NAV
+------------------------*/
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* -----------------------
+   HAMBURGER
+------------------------*/
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 26px;
+  height: 2px;
+  background: var(--text);
+}
+
+@media (max-width: 768px) {
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    display: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* -----------------------
+   MAIN
+------------------------*/
+main {
+  padding: 2rem 1rem;
+}
+
+button {
+  font-family: "Michroma", sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* -----------------------
+   PAGE / PAPER
+------------------------*/
+.page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 3rem;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+}
+
+/* -----------------------
+   HEADINGS
+------------------------*/
+h1, h2 {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+/* -----------------------
+   SLIDESHOW
+------------------------*/
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  margin: 2.5rem 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.slideshow img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.slideshow img.active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .slideshow {
+    height: 220px;
+  }
+}
+
+/* -----------------------
+   COLUMNS
+------------------------*/
+.columns {
+  column-count: 2;
+  column-gap: 3rem;
+}
+
+.columns p {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
+}
+
+.columns strong {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    column-count: 1;
+  }
+}
+
+/* -----------------------
+   MAP
+------------------------*/
+.map {
+  width: 100%;
+  height: 320px;
+  margin-top: 2.5rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* -----------------------
+   FOOTER
+------------------------*/
+footer {
+  max-width: 1200px;
+  margin: 3rem auto 1rem;
+  padding: 2rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+/* -----------------------
+   WHATSAPP FLOAT
+------------------------*/
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  z-index: 2000;
+}
+</style>
+</head>
+
+<body id="top">
+
+<header>
+  <div class="nav">
+    <div class="logo">Sinikithemba Organization</div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <nav class="menu" id="menu">
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#help">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <button onclick="toggleTheme()">Day / Night</button>
+
+  <section class="page">
+    <h1 id="about">Serving the KwaDukuza Community</h1>
+
+    <div class="slideshow">
+      <img src="Image1.jpeg" class="active">
+      <img src="Image2.jpeg">
+      <img src="Image3.jpeg">
+      <img src="image4.jpeg">
+      <img src="Image1.jpeg">
+    </div>
+
+    <div class="columns">
+      <p>
+        Sinikithemba Organization is a non-profit organisation registered in 2012,
+        based at Groutville Ward 10. We are committed to improving the quality of life
+        of orphans and vulnerable children, individuals, and families, including
+        those affected and infected by HIV/AIDS.
+      </p>
+
+      <p>
+        Our organization addresses social, emotional, and behavioural challenges
+        through programmes that foster psychosocial well-being, positive behaviour
+        change, educational support, and community awareness.
+      </p>
+
+      <h2 id="services">Our Services</h2>
+
+      <p><strong>1. Psychosocial Support</strong><br>
+        We provide counselling, emotional support, and life-skills development to help individuals 
+        cope with social challenges. Our services aim to strengthen mental well-being, self-esteem, and 
+        resilience among children, adolescents, and caregivers.
+      </p>
+
+      <p><strong>2. Behavioural Change Programmes</strong><br>
+       Our behavioural change programmes promote positive attitudes and healthy lifestyles. These 
+      initiatives focus on reducing risky behaviours, improving decision-making, encouraging 
+      adherence to treatment, and fostering responsible social behaviour through education and 
+      mentorship.
+      </p>
+
+      <p><strong>3. After-School Programmes</strong><br>
+        We implement structured after-school programmes that offer academic support, mentorship, 
+        recreational activities, and life-skills training. These programmes provide a safe and supportive 
+        environment that enhances learning outcomes and personal development for vulnerable 
+        children and youth. 
+      </p>
+
+      <p><strong>4. Awareness Programmes</strong><br>
+        We conduct community awareness initiatives to increase knowledge on HIV/AIDS, child 
+        protection, health, and social inclusion. Our awareness activities aim to reduce stigma and discrimination, promote prevention, and strengthen community participation in supporting vulnerable populations.
+      </p>
+
+      <h2 id="help"><strong>To offer helping hand:</strong></h2>
+
+      <p>
+        Kindly contact us on <a href="https://wa.me/27833977694">083 397 7694</a><br>
+        Or email us at <a href="mailto:sinikithembaorganization@gmail.com">sinikithembaorganization@gmail.com</a><br>
+        Or visit our Centre near Thuthukani at Groutville, KwaDukuza<br>
+        R102 Old Main Road Groutville Mission, KwaDukuza<br>
+        4450
+      </p>
+
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=R102%20Old%20Main%20Road%20Groutville%20Mission%20KwaDukuza&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <strong>Contact Us</strong><br>
+  R102 Old Main Road, Groutville Mission, KwaDukuza, 4450<br>
+  Email: <a href="mailto:sinikithembaorganization@gmail.com">sinikithembaorganization@gmail.com</a><br>
+  Contact: <a href="https://wa.me/27733528051">073 352 8051</a> / <a href="https://wa.me/27833977694">083 397 7694</a><br>
+  NPO No: 098-284<br>
+  <p><strong>DEVELOPED BY <a href="https://www.insyncwithtornado.info/" target="_blank">INSYNCTECH</a></strong></p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/27833977694">💬</a>
+
+<script>
+function toggleMenu() {
+  document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("night");
+}
+
+const slides = document.querySelectorAll(".slideshow img");
+let index = 0;
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}, 5000);
+</script>
+
+</body>
+</html>
